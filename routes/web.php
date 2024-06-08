@@ -18,6 +18,25 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/home', function () {
+    return Inertia::render('Home',[
+        'title' => 'yeeha',
+    ]);
+})->middleware(['auth', 'verified'])->name('home');
+
+Route::get('/users', function () {
+    return Inertia::render('Users');
+})->middleware(['auth', 'verified'])->name('users');
+
+Route::get('/settings', function () {
+    return Inertia::render('Settings');
+})->middleware(['auth', 'verified'])->name('settings');
+
+Route::post('/logout2', function () {
+    // return Inertia::render('Logout2');
+    dd('yes');
+})->middleware(['auth', 'verified'])->name('logout2');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
