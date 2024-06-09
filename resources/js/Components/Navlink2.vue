@@ -1,23 +1,22 @@
 <template lang="">
     
-    <li><Link :href="data.linkAddress" :method="data.method" :as="data.as">{{ data.linkName}}</Link></li>
+    <Link :data="data"  class="" :class="{'font-bold underline':  active}" ><slot></slot></Link>
      
 </template>
 
-<script>
+<script setup>
 
 import { Link } from '@inertiajs/vue3';
 
-export default {
- 
-components: {Link},
-props: {
-    data: Object,
-  }
 
-}
+const props = defineProps({
+    data: Object,
+    preserve: Boolean,
+    active: Boolean,
+});
 
 </script>
+
 <style lang="">
 
 </style> 

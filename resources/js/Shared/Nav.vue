@@ -1,22 +1,16 @@
 <template lang="">
-    <nav>
-        <ul>
-            <Navlink2 :data="{ linkAddress : '/home', linkName : 'Home', method : 'GET', as : 'a'}" />
-            <Navlink2 :data="{ linkAddress : '/settings', linkName : 'Settings', method : 'GET', as : 'a'}" />
-            <Navlink2 :data="{ linkAddress : '/users', linkName : 'Users', method : 'GET', as : 'a'}" />
-            <Navlink2 :data="{ linkAddress : '/logout2', linkName : 'Logout', method : 'POST', as : 'button'}" />
-        </ul>
+    <nav class="flex gap-x-6">
+        <Navlink2 href="/home" :data="{ linkAddress : '/home', linkName : 'Home',}" :active="$page.component === 'Home'">Home</Navlink2>
+        <Navlink2 href="/settings" :data="{ linkAddress : '/settings', linkName : 'Settings',}" :active="$page.component === 'Settings'">Settings</Navlink2>
+        <Navlink2 href="/users" :data="{ linkAddress : '/users', linkName : 'Users',}" :active="$page.component === 'Users'"> Users</Navlink2>
+        <Navlink2 href="/logout2" preserve-scroll :data="{ linkAddress : '/logout2', linkName : 'Logout'}" :active="$page.component === 'Logout2'">Logout2</Navlink2>
     </nav>
 </template>
-<script>
-import { Link } from '@inertiajs/vue3';
+<script setup>
+
+
 import Navlink2 from '../Components/Navlink2.vue';
 
-export default {
-
-    components: {Link,Navlink2}
-    
-}
 </script>
 <style lang="">
     

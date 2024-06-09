@@ -1,16 +1,10 @@
 <template lang="">
-    <h1 class="mb-10">Home</h1>
-    <Nav />
+
+        <h1 class="mb-10 text-xl font-medium">Home</h1>
 
 </template>
-<script>
+<script setup>
 
-import Nav from '../Shared/Nav.vue';
-
-export default {
-
-    components: { Nav },
-};
 </script>
 <style lang="">
     

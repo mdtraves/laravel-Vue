@@ -25,7 +25,9 @@ Route::get('/home', function () {
 })->middleware(['auth', 'verified'])->name('home');
 
 Route::get('/users', function () {
-    return Inertia::render('Users');
+    return Inertia::render('Users', [
+        'time' => date('H:i:s')
+    ]);
 })->middleware(['auth', 'verified'])->name('users');
 
 Route::get('/settings', function () {
@@ -34,7 +36,7 @@ Route::get('/settings', function () {
 
 Route::post('/logout2', function () {
     // return Inertia::render('Logout2');
-    dd('yes');
+    dd(request('data.foo'));
 })->middleware(['auth', 'verified'])->name('logout2');
 
 Route::middleware('auth')->group(function () {
