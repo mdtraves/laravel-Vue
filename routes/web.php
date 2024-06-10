@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -24,11 +25,7 @@ Route::get('/home', function () {
     ]);
 })->middleware(['auth', 'verified'])->name('home');
 
-Route::get('/users', function () {
-    return Inertia::render('Users', [
-        'time' => date('H:i:s')
-    ]);
-})->middleware(['auth', 'verified'])->name('users');
+Route::get('/users',  [UserController::class, 'index'])->middleware(['auth', 'verified'])->name('users');
 
 Route::get('/settings', function () {
     return Inertia::render('Settings');
