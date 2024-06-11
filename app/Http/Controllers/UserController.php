@@ -14,10 +14,16 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all()->map(fn($user) => [
-            'name' => $user->name,
-            'email' => $user->email,
-        ]);
+        // $users = User::all()->map(fn($user) => [
+        //     'name' => $user->name,
+        //     'email' => $user->email,
+        //     'password' => $user->password,
+        //     'created' => $user->created_at,
+        // ]);
+
+        $users = User::paginate(15);
+           
+      
 
         $time = date('d/m/Y H:i');
 

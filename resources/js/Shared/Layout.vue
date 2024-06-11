@@ -7,8 +7,12 @@
         </div>
         <Nav></Nav>
     </header>
-    <iframe height="200px" width="100%" frameborder="no" scrolling="no" seamless src="https://player.simplecast.com/7b274140-6dc1-4bfb-b268-93ca492a1c99?dark=false"></iframe>
+    
     <slot></slot>
+
+    <footer>
+        FoOteR
+    </footer>
 
 </template>
 
