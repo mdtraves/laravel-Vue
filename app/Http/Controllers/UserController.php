@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
 use App\Models\User;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Request;
 
 
 class UserController extends Controller
@@ -21,18 +22,25 @@ class UserController extends Controller
         //     'created' => $user->created_at,
         // ]);
 
-        $users = User::paginate(15);
+        
            
       
 
         $time = date('d/m/Y H:i');
 
         return Inertia::render('Users', [
-            'users' => $users,
-            'time' => $time,
+
+            'users' => User::query()
+            ->when(Request::input('filter'), function( $query, $filter){
+                $query->where( 'name' , 'like', '%' . $filter . '%');
+            })
+            ->paginate(15)
+            ->appends(Request::all()),
+            'filters' => Request::only(['filter'])
+
         ]);
         
-    }
+    } 
 
     /**
      * Show the form for creating a new resource.
